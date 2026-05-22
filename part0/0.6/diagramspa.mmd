@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: User submits a new note
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    Note right of browser: {"content":"text","date":"2026-05-21T13:02:19.443Z"}
+    Note left of server: Server saves the text in memory
+    activate server
+    server-->>browser: 201 created | {"message":"note created"}
+    deactivate server
+
+    Note right of browser: The browser update the list without reloading the page
